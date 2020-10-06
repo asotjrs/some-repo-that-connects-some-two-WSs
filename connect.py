@@ -1,5 +1,4 @@
 # import Libs
-import io
 
 from prestapyt import *
 import odoorpc
@@ -31,6 +30,7 @@ product_price_in_prestashop=pro['product']['price']
 if 'product.template' in odoo.env:
 	#this returns a lot of id's
 	product_ids = odoo.env['product.template'].search([])
+
 	# brows that specific item from odoo (static retrieve for demo purposes )
 	call_my_dzit_product=odoo.env['product.template'].browse(29)
 
