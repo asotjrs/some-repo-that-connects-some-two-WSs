@@ -1,4 +1,6 @@
 # import Libs
+import io
+
 from prestapyt import *
 import odoorpc
 
@@ -19,25 +21,22 @@ prestashop = PrestaShopWebServiceDict("http://localhost:8080/api", "XK314MB2NT7I
 pro=prestashop.get("products",32)
 
 
-
+#retrieving the name and the price from  prestasop
 product_name_in_prestashop=pro['product']['name']['language'][0]['value']
 product_price_in_prestashop=pro['product']['price']
 
 
 
-# Current user
+# retrieving the product from odoo
 if 'product.template' in odoo.env:
 	#this returns a lot of id's
 	product_ids = odoo.env['product.template'].search([])
+	# brows that specific item from odoo (static retrieve for demo purposes )
 	call_my_dzit_product=odoo.env['product.template'].browse(29)
+
+	# update the fields with the prestashop infos
 	call_my_dzit_product.name=product_name_in_prestashop
 	call_my_dzit_product.list_price=product_price_in_prestashop
-
-
-
-
-
-
 
 
 
